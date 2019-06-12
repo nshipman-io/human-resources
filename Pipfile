@@ -8,6 +8,7 @@ pytest = "*"
 pytest-mock = "*"
 
 [packages]
+human-resources = {editable = true,path = "."}
 
 [requires]
 python_version = "3.6"
