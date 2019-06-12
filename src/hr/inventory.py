@@ -4,9 +4,10 @@ import pwd
 import spwd 
 import sys
 
-def load_inventory(inventory): 
+def load(inventory): 
     try: 
         print(f"Loading Inventory file: {inventory}")
+        inventory = open(inventory)
         users = json.load(inventory)
     except ValueError: 
         print(f"Error loading '{inventory}'. File must be in JSON format.")
@@ -14,17 +15,19 @@ def load_inventory(inventory):
     else:
         return users 
 
-def export_inventory(): 
+def export(inventory): 
     users = []
     for p in pwd.getpwall():
         if p.pw_uid > 1000:
             name = p.pw_name
-            groups = grp.getgrgid(p.pw_gid)
-            password = spwd.getspnam(name).sp_pwdp
+            groups = grp.getgrgid(p.pw_gid)[0]
+            password = spwd.getspnam(name)[1]
             user = {
                 "name": name,
                 "groups": groups,
                 "password": password
             }
             users.append(user)
-    print(users)
+    with open(inventory,'w',encoding='utf-8') as f:
+        json.dump(users, f)
+    print(f"System state exported to: {inventory}")
