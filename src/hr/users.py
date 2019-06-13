@@ -10,7 +10,8 @@ def add(user_info):
             "-p", 
             user_info['password'],
             "-G",
-            _groups_str(user_info),
+            user_info['groups']
+            #_groups_str(user_info),
             user_info['name'],
         ])
     except: 
@@ -37,7 +38,8 @@ def update(user_info):
             "-p", 
             user_info['password'], 
             '-G',
-            _groups_str(user_info),
+            user_info['groups'], 
+            #_groups_str(user_info),
             user_info['name'],
         ])
     except: 
