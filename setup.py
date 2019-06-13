@@ -12,5 +12,8 @@ setup(
     author_email='norman@nshipman.io',
     install_requires=[],
     packages=find_packages('src'),
-    package_dir={'': 'src'}
+    package_dir={'': 'src'},
+    entry_points={
+        'console_scripts': 'hr=hr.cli:main',
+    },
 )

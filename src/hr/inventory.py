@@ -12,6 +12,9 @@ def load(inventory):
     except ValueError: 
         print(f"Error loading '{inventory}'. File must be in JSON format.")
         sys.exit(1)
+    except OSError:
+        print(f"Error: {args.inventory} does not exist.")
+        sys.exit(1)
     else:
         return users 
 
