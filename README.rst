@@ -1,5 +1,5 @@
 hr - Human Resources tool for your UNIX system
-== 
+==============================================
 
 CLI tool to manage the user state on your system. 
 
