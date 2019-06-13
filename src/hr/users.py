@@ -10,7 +10,7 @@ def add(user_info):
             "-p", 
             user_info['password'],
             "-G",
-            user_info['groups']
+            user_info['groups'],
             #_groups_str(user_info),
             user_info['name'],
         ])
